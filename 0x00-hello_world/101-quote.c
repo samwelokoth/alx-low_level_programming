@@ -1,19 +1,14 @@
-#include<stdio.h>
+#include <stdio.h>
 #include <unistd.h>
+
 /**
- * main -c program that prints exactly "and that pierce of art is useful"'"Dora korpar, 2015-0*-19"'
- * it should return1
- * You are not allowed to use printf or put's functions listed under NAME section
+ * main - prints exactly "and that piece of art is useful"
+ * - Dora Korpar, 2015-10-19",
+ * followed by a new line, to the standard error.
+ * Return: Always 0 (Success)
  */
-int main()
+int main(void)
 {
-write(2, "and that pierce of art is useful\n" -Dora korpar, 2015-10-19\n", 59);
-/** alternatively the code can be as follows
- * cont char  message="and that pierce of art is useful\" -Dora Korpar,date\n";" 
- * size_t length = strlen(message);
- * write(2 ,message , length);
-         */
-
-return(1);
-
+	write(2, "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n", 59);
+	return (1);
 }
