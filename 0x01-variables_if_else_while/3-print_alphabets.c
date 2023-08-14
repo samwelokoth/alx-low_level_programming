@@ -1,23 +1,24 @@
 #include <stdio.h>
 
 /**
- * main -Entry point of the program
+ * main - Entry point of the program
  *
- * Description : This program  prints the lowercase alphabets
- * Followed by the uppercase alphabets
- * Author : samwelokoth8@gmail.com
+ * Description: This program prints the lowercase alphabets
+ * followed by the uppercase alphabets
  *
- * Return : Always 0 (success)
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
 	char letter;
 
 	for (letter = 'a'; letter <= 'z'; letter++)
-		putchar (letter);
+		putchar(letter);
 
 	for (letter = 'A'; letter <= 'Z'; letter++)
 		putchar(letter);
-		putchar('\n');
+
+	putchar('\n');
 	return (0);
 }
+
