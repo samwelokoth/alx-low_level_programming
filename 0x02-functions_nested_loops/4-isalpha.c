@@ -1,10 +1,24 @@
+#include <stdio.h>
+#include "main.h"
+
 int _isalpha(int c)
 {
-    if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+    return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+}
+
+int main(void)
+{
+    int result = _isalpha('A');
+    
+    if (result)
     {
-        return 1; // Alphabetic character
+        printf("Character is alphabetic.\n");
+    }
+    else
+    {
+        printf("Character is not alphabetic.\n");
     }
 
-    return 0; // Not an alphabetic character
+    return 0;
 }
 
