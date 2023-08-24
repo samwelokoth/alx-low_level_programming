@@ -1,4 +1,5 @@
 #include "main.h"
+#include<stdio.h>
 /*
 *write a function that reverses the content of an array of integers
 *Where n is the number of elements in the array
