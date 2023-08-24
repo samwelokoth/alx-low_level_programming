@@ -20,5 +20,5 @@ int _isupper(int);
 int _isdigit(int);
 int mul(int, int);
 char *_strcat(char *dest, char *src);
-
+char *_strncat(char *dest, char *src, int n);
 #endif /* MAIN_H */
