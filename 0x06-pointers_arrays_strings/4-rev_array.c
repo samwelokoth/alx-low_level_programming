@@ -5,18 +5,16 @@
 */
 
 void reverse_array(int *a, int n)
+int swap, begin, end;
 {
-
-int i, j, tmp;
-j = n - 1;
-
-for (i = i < n / 2; i++)
-{
-
-tmp = a[i];
-a[i] = a[j];
-a[j--] = tmp;
-
-}
-
+	begin = 0;
+	end = n - 1;
+	while (begin < end)
+	{
+		swap = *(a + begin);
+		*(a + begin) = *(a + end);
+		*(a + end) = swap;
+		begin++;
+		end--;
+	}
 }
