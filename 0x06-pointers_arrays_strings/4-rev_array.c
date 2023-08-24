@@ -1,21 +1,20 @@
 #include "main.h"
-#include<stdio.h>
-/*
-*write a function that reverses the content of an array of integers
-*Where n is the number of elements in the array
-*/
-
+/**
+ * reverse_array - reverse array of integers
+ * @a: array
+ * @n: number of elements of array
+ *
+ * Return: void
+ */
 void reverse_array(int *a, int n)
-int swap, begin, end;
 {
-	begin = 0;
-	end = n - 1;
-	while (begin < end)
+	int i;
+	int t;
+
+	for (i = 0; i < n--; i++)
 	{
-		swap = *(a + begin);
-		*(a + begin) = *(a + end);
-		*(a + end) = swap;
-		begin++;
-		end--;
+		t = a[i];
+		a[i] = a[n];
+		a[n] = t;
 	}
 }
