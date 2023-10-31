@@ -16,8 +16,7 @@ To get started with this project, follow these steps:
 1. Clone this repository to your local machine.
 
 ```shell
-git clone https://github.com/alx-low_level_programming/samwelokoth/file-io-c-project.git
-
+git clone https://github.com/samwelokoth/alx-low_level_project/0x15-file_io.git
 
     Compile the C code using a C compiler (e.g., GCC):
 
@@ -48,6 +47,5 @@ Author
     Samwel Okoth
     Email: samwelokoth8@gmail.com
 
-Acknowledgments
 
-    [Link to any libraries, resources, or tutorials used in the project
+
