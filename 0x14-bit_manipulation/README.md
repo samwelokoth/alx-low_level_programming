@@ -4,8 +4,8 @@
 This project explores bit manipulation techniques in the C programming language. Bit manipulation is a fundamental concept in computer science and is widely used for tasks like setting, clearing, toggling, and checking individual bits within data. This project provides hands-on experience and understanding of bitwise operations in C.
 
 ## Project Files
-- [main.c](main.c): The main C file where bit manipulation operations are demonstrated.
-- [bit_manipulation.h](bit_manipulation.h): The header file containing function declarations and descriptions.
+- [main.c](main.c): The main C file where bit manipulation operations are demonstrated.Main c files were solely used for testing 
+- [main.h](main.h): The header file containing function declarations and descriptions.
 - [0x14-bit_manipulation](0x14-bit_manipulation): The compiled binary executable for the project.
 
 ## Usage
