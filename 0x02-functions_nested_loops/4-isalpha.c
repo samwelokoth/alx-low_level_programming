@@ -1,24 +1,14 @@
-#include <stdio.h>
 #include "main.h"
-
+/**
+ * _isalpha - Checks for alphabetic order
+ *
+ * @c: alpabet to check for
+ *
+ * Return: 1 if c is a letter, 0 otherwise
+ */
 int _isalpha(int c)
 {
-    return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
-}
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 
-int main(void)
-{
-    int result = _isalpha('A');
-    
-    if (result)
-    {
-        printf("Character is alphabetic.\n");
-    }
-    else
-    {
-        printf("Character is not alphabetic.\n");
-    }
-
-    return 0;
 }
 

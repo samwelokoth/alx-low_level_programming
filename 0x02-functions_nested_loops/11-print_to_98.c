@@ -1,108 +1,49 @@
-#include <stdio.h>
+Task 12
 
-int powB(int base, int power)
+#include "main.h"
+/**
+ * print_times_table - prints the n times table, starting with 0
+ * @n: number of the times table
+ */
+void print_times_table(int n)
 {
-	int i, prod = 1;
-	for (i = 0; i < power; i++)
+	int i, j, k;
+
+	if (n >= 0 && n <= 15)
 	{
-		prod = prod * base;
-	}
-	return prod;
-}
-
-int numLength(int num)
-{
-	int length = 0;
-
-	while (num)
-	{
-		num = num / 10;
-		length += 1;
-	}
-
-
-	return length;
-}
-void putnchar(int num)
-{
-	if (num == 0){
-		putchar(48);
-		return ;
-	}
-	int length = numLength(num);
-	int j = length - 1;
-	while (j >= 0)
-	{
-		//printf("tmp-->%i , char-->%i\n",tmp,tmp/powB(10,j)+48);
-		if (num % powB(10,j) == 0 && j != 0){
-			putchar(48 + num / powB(10, j));
-
-			int k;
-			for (k=j;k>0;k--)
-			{
-				putchar(48);
-
-			}
-			j=-1;
-		}
-		else
+		for (i = 0; i <= n; i++)
 		{
-			int digit1 = num / powB(10, j);
-			putchar(digit1 + 48);
-
-			int tmp2 = num;
-			num -= powB(10, j) * digit1 ;
-			if (numLength(tmp2) - numLength(num) == 2)
+			for (j = 0; j <= n; j++)
 			{
-				putchar(48);
-				j--;
+				k = j * i;
+				if (j == 0)
+				{
+					_putchar(k + '0');
+				} else if (k < 10 && j != 0)
+				{
+					_putchar(',');
+					_putchar(' ');
+					_putchar(' ');
+					_putchar(' ');
+					_putchar(k + '0');
+				} else if (k >= 10 && k < 100)
+				{
+					_putchar(',');
+					_putchar(' ');
+					_putchar(' ');
+					_putchar((k / 10) + '0');
+					_putchar((k % 10) + '0');
+				} else if (k >= 100)
+				{
+					_putchar(',');
+					_putchar(' ');
+					_putchar((k / 100) + '0');
+					_putchar(((k / 10) % 10) + '0');
+					_putchar((k % 10) + '0');
+				}
 			}
-			j--;
+			_putchar('\n');
 		}
 	}
-
-}
-void print_to_98(int n)
-{
-
-	int i,j;
-
-	if (n <= 98)
-	{
-		for (i = n; i < 98; i++)
-		{
-			if (i < 0)
-			{
-				putchar('-');
-				putnchar(-1 * i);
-			}else
-			{
-				putnchar(i);
-			}
-			putchar(',');
-			putchar(' ');
-		}
-	}
-	else
-	{
-		for (i = n; i > 98; i--)
-		{
-			putnchar(i);
-			putchar(',');
-			putchar(' ');
-		}
-	}
-	putchar(48+9);
-	putchar(48+8);
-	putchar('\n');
 }
 
-int main(void)
-{
-	print_to_98(0);
-	print_to_98(98);
-	print_to_98(111);
-	print_to_98(81);
-	print_to_98(-10);
-	return 0;
-}
