@@ -10,9 +10,9 @@
  */
 int main(void)
 {
-    printf("with proper grammar, but the outcome is a piece of art,\n");
+printf("with proper grammar, but the outcome is a piece of art,\n");
     /* The main part of the program */
 
-    return (0); /* If success */
+return (0); /* If success */
 }
 
