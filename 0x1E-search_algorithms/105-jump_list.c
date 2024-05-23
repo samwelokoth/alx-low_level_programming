@@ -1,26 +1,52 @@
-#ifndef SEARCH_ALGOS_H
-#define SEARCH_ALGOS_H
-
-#include <stddef.h>
+#include <math.h>
+#include "search_algos.h"
 
 /**
- * struct listint_s - singly linked list
+ * jump_list - search a single linked list using the jump search method
+ * @list: pointer to first node in linked list
+ * @size: size of the list (number of nodes)
+ * @value: value to be searched for
  *
- * @n: Integer
- * @index: Index of the node in the list
- * @next: Pointer to the next node
- *
- * Description: singly linked list node structure
+ * Return: pointer to first node containing value or NULL if not present
+ * or list is empty
  */
-typedef struct listint_s
+listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-    int n;
-    size_t index;
-    struct listint_s *next;
-} listint_t;
+	listint_t *hold = list;
+	int i, jump;
 
-/* Function prototypes */
-listint_t *jump_list(listint_t *list, size_t size, int value);
+	if (list == NULL || size == 0)
+		return (NULL);
 
-#endif /* SEARCH_ALGOS_H */
+	jump = sqrt(size);
 
+	while (hold->next != NULL)
+	{
+		list = hold;
+
+		for (i = 0; i < jump; i++)
+		{
+			hold = hold->next;
+			if (hold->next == NULL)
+				break;
+		}
+
+		printf("Value checked at index [%lu] = [%d]\n", hold->index, hold->n);
+
+		if (hold->n >= value)
+			break;
+	}
+
+	printf("Value found between indexes [%lu] and [%lu]\n", list->index,
+	       hold->index);
+
+	while (list != NULL && list != hold->next)
+	{
+		printf("Value checked at index [%lu] = [%d]\n", list->index, list->n);
+		if (list->n == value)
+			return (list);
+		list = list->next;
+	}
+
+	return (NULL);
+}

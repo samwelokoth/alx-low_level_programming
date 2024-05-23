@@ -1,72 +1,103 @@
-#include <stdio.h>
 #include "search_algos.h"
 
 /**
- * exponential_search - Searches for a value in a sorted array of integers
- *                      using the Exponential search algorithm
- * @array: Pointer to the first element of the array to search in
- * @size: Number of elements in the array
- * @value: Value to search for
+ * print_array - prints an array of integers
+ * @array: pointer to the start of the array
+ * @size: size of the array (number of elements)
  *
- * Return: Index of the value in the array, or -1 if not found
+ * Return: nothing
  */
-int exponential_search(int *array, size_t size, int value)
+void print_array(int *array, int size)
 {
-    if (array == NULL)
-        return -1;
+	int i;
 
-    if (array[0] == value)
-        return 0;
+	if (array == NULL || size == 0)
+		return;
 
-    size_t i = 1;
-    while (i < size && array[i] <= value)
-    {
-        printf("Value checked array[%lu] = [%d]\n", i, array[i]);
-        i *= 2;
-    }
+	printf("Searching in array: ");
 
-    size_t left = i / 2;
-    size_t right = (i < size) ? i : size - 1;
+	for (i = 0; i < size; i++)
+	{
+		if (i == 0)
+			printf("%d", array[i]);
+		else
+			printf(", %d", array[i]);
+	}
 
-    printf("Value found between indexes [%lu] and [%lu]\n", left, right);
-
-    return binary_search(array, left, right, value);
+	printf("\n");
 }
 
 /**
- * binary_search - Searches for a value in a sorted array of integers
- *                 using the Binary search algorithm
- * @array: Pointer to the first element of the array to search in
- * @left: Left index of the search range
- * @right: Right index of the search range
- * @value: Value to search for
+ * binary_search - find value in sorted array using binary search method
+ * @array: pointer to first element in array to be searched
+ * @size: size of the array (number of elements)
+ * @value: value to be searched for
  *
- * Return: Index of the value in the array, or -1 if not found
+ * Return: index position of value or -1 if not found or array is null
  */
-int binary_search(int *array, size_t left, size_t right, int value)
+int binary_search(int *array, size_t size, int value)
 {
-    while (left <= right)
-    {
-        size_t mid = (left + right) / 2;
+	int low = 0;
+	int high = size - 1;
+	int mid;
 
-        printf("Searching in array: ");
-        for (size_t i = left; i <= right; i++)
-        {
-            printf("%d", array[i]);
-            if (i < right)
-                printf(", ");
-        }
-        printf("\n");
+	if (array == NULL || size == 0)
+		return (-1);
 
-        if (array[mid] == value)
-            return mid;
+	while (low <= high)
+	{
+		mid = low + (high - low) / 2;
 
-        if (array[mid] < value)
-            left = mid + 1;
-        else
-            right = mid - 1;
-    }
+		print_array(&array[low], (high - low) + 1);
 
-    return -1; /* Not found */
+		if (array[mid] == value)
+			return (mid);
+
+		if (array[mid] > value)
+			high = mid - 1;
+
+		else
+			low = mid + 1;
+	}
+
+	return (-1);
 }
 
+/**
+ * exponential_search - search for a value in a sorted array using exponential
+ * search and binary search algorithms
+ * @array: pointer to the array to be searched
+ * @size: size of the array (number of elements)
+ * @value: the value to be searched for
+ *
+ * Return: fist index value is found at or -1 if not present or array is null
+ */
+int exponential_search(int *array, size_t size, int value)
+{
+	int lower_bound;
+	int upper_bound = 1;
+	int value_position;
+
+	if (array == NULL || size == 0)
+		return (-1);
+
+	while (upper_bound < (int)size && array[upper_bound] < value)
+	{
+		printf("Value checked array[%d] = [%d]\n", upper_bound, array[upper_bound]);
+		lower_bound = upper_bound;
+		upper_bound *= 2;
+	}
+
+	if (upper_bound >= (int)size)
+		upper_bound = size - 1;
+
+	printf("Value found between indexes [%d] and [%d]\n", lower_bound,
+	       upper_bound);
+	value_position = binary_search(&array[lower_bound],
+				       upper_bound - lower_bound + 1, value);
+
+	if (value_position != -1)
+		value_position += lower_bound;
+
+	return (value_position);
+}
